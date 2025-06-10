@@ -10,9 +10,7 @@
       --main-color: #00274d;
       --accent: #f1c40f;
       --light-bg: #f7f9fc;
-      --card-bg: #ffffff;
       --text-dark: #2c3e50;
-      --text-light: #7f8c8d;
     }
 
     * {
@@ -54,9 +52,9 @@
     nav {
       position: sticky;
       top: 0;
-      background: #ffffff;
+      background: white;
       padding: 1rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       display: flex;
       justify-content: center;
       gap: 2rem;
@@ -68,7 +66,6 @@
       color: var(--main-color);
       font-weight: 600;
       font-size: 1rem;
-      transition: color 0.3s;
     }
 
     nav a:hover {
@@ -96,18 +93,54 @@
     }
 
     .service-card {
-      background: var(--card-bg);
+      background: linear-gradient(135deg, #ff6b6b, #6bc5ff, #f1c40f);
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
+      color: white;
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
       text-align: center;
       font-weight: 600;
+      cursor: pointer;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transform: scale(1.05);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .popup h3 {
+      margin-top: 0;
+      color: var(--main-color);
+    }
+
+    .popup-close {
+      float: right;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: red;
     }
 
     .contact-info p {
@@ -157,13 +190,38 @@
 
       nav {
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
       }
     }
   </style>
+  <script>
+    function showPopup(service) {
+      const descriptions = {
+        'Xerox (Black & White)': 'High-quality black and white Xerox services for students and professionals.',
+        'Color Xerox': 'Vibrant color Xerox copies for presentations, posters, and more.',
+        'Printouts (A4 / A3 / Legal)': 'Get your documents printed in A4, A3, or Legal sizes.',
+        'Scanning (Single / Multi-page)': 'Efficient single or multipage scanning services.',
+        'Photo Printing & Passport Photos': 'Instant passport-size and high-resolution photo printing.',
+        'Rubber Stamps & Name Stamps': 'Custom rubber and name stamps for offices and institutions.',
+        'PVC ID Card & Lamination': 'Durable PVC cards and document lamination services.',
+        'Document Lamination': 'Preserve your important documents with lamination.',
+        'Spiral Binding / Wire Binding': 'Perfect binding options for projects and presentations.',
+        'Resume & Project Printouts': 'Premium quality prints for resumes and academic work.'
+      };
+      document.getElementById('popup-content').innerHTML =
+        '<span class="popup-close" onclick="closePopup()">&times;</span>' +
+        '<h3>' + service + '</h3>' +
+        '<p>' + descriptions[service] + '</p>';
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
 </head>
 <body>
+
   <header>
     <div class="arabic">بِسْمِ ٱللَّٰهِ</div>
     <h1>AR STUDENTS XEROX</h1>
@@ -179,18 +237,22 @@
   <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="services-grid">
-      <div class="service-card">Xerox (Black & White)</div>
-      <div class="service-card">Color Xerox</div>
-      <div class="service-card">Printouts (A4 / A3 / Legal)</div>
-      <div class="service-card">Scanning (Single / Multi-page)</div>
-      <div class="service-card">Photo Printing & Passport Photos</div>
-      <div class="service-card">Rubber Stamps & Name Stamps</div>
-      <div class="service-card">PVC ID Card & Lamination</div>
-      <div class="service-card">Document Lamination</div>
-      <div class="service-card">Spiral Binding / Wire Binding</div>
-      <div class="service-card">Resume & Project Printouts</div>
+      <div class="service-card" onclick="showPopup('Xerox (Black & White)')">Xerox (Black & White)</div>
+      <div class="service-card" onclick="showPopup('Color Xerox')">Color Xerox</div>
+      <div class="service-card" onclick="showPopup('Printouts (A4 / A3 / Legal)')">Printouts (A4 / A3 / Legal)</div>
+      <div class="service-card" onclick="showPopup('Scanning (Single / Multi-page)')">Scanning</div>
+      <div class="service-card" onclick="showPopup('Photo Printing & Passport Photos')">Photo Printing</div>
+      <div class="service-card" onclick="showPopup('Rubber Stamps & Name Stamps')">Rubber Stamps</div>
+      <div class="service-card" onclick="showPopup('PVC ID Card & Lamination')">PVC ID Card</div>
+      <div class="service-card" onclick="showPopup('Document Lamination')">Document Lamination</div>
+      <div class="service-card" onclick="showPopup('Spiral Binding / Wire Binding')">Spiral Binding</div>
+      <div class="service-card" onclick="showPopup('Resume & Project Printouts')">Resume & Projects</div>
     </div>
   </section>
+
+  <div id="popup" class="popup">
+    <div id="popup-content"></div>
+  </div>
 
   <section class="section" id="contact">
     <h2>Contact Us</h2>
@@ -203,9 +265,8 @@
 
   <section class="section" id="location">
     <h2>Visit Us</h2>
-    <p>No: 55/2, Sowrastra Nagar 9th Street,<br>
-      Choolaimedu, Chennai - 600094</p>
-    <iframe src="https://www.google.com/maps?q=55/2+Sowrastra+Nagar+9th+Street,+Choolaimedu,+Chennai+600094&output=embed"></iframe>
+    <p>No: 55/2, Sowrastra Nagar 9th Street,<br>Choolaimedu, Chennai - 600094</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.6504923789021!2d80.22970396947677!3d13.060988805614864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526752655cd895%3A0xbbed5153bc427724!2sAR%20Students%20Xerox!5e0!3m2!1sen!2sin!4v1749572846192!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 
   <a class="whatsapp-button" href="https://wa.me/919361954238" target="_blank">
@@ -215,5 +276,6 @@
   <footer>
     &copy; 2025 AR Students Xerox, Choolaimedu | Designed with ❤ by Imran Ahmed
   </footer>
+
 </body>
 </html>
