@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Students Xerox - Choolaimedu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #00274d;
+      --accent: #f1c40f;
+      --light-bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text-dark: #2c3e50;
+      --text-light: #7f8c8d;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--main-color), #0056b3);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .arabic {
+      font-size: 1.3rem;
+      direction: rtl;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: var(--main-color);
+      border-left: 5px solid var(--accent);
+      padding-left: 1rem;
+      font-size: 2rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      margin: 0.7rem 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 999;
+    }
+
+    .whatsapp-button:hover {
+      background: #1eb84c;
+    }
+
+    footer {
+      background: var(--main-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="arabic">بِسْمِ ٱللَّٰهِ</div>
+    <h1>AR STUDENTS XEROX</h1>
+    <p>All Types of Printing Work - Choolaimedu, Chennai</p>
+  </header>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#location">Location</a>
+  </nav>
+
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">Xerox (Black & White)</div>
+      <div class="service-card">Color Xerox</div>
+      <div class="service-card">Printouts (A4 / A3 / Legal)</div>
+      <div class="service-card">Scanning (Single / Multi-page)</div>
+      <div class="service-card">Photo Printing & Passport Photos</div>
+      <div class="service-card">Rubber Stamps & Name Stamps</div>
+      <div class="service-card">PVC ID Card & Lamination</div>
+      <div class="service-card">Document Lamination</div>
+      <div class="service-card">Spiral Binding / Wire Binding</div>
+      <div class="service-card">Resume & Project Printouts</div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:studentsprint360@gmail.com">studentsprint360@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+919362954238">+91 93629 54238</a></p>
+      <p><strong>Business Hours:</strong> 9:00 AM - 9:00 PM (Mon-Sat)</p>
+    </div>
+  </section>
+
+  <section class="section" id="location">
+    <h2>Visit Us</h2>
+    <p>No: 55/2, Sowrastra Nagar 9th Street,<br>
+      Choolaimedu, Chennai - 600094</p>
+    <iframe src="https://www.google.com/maps?q=55/2+Sowrastra+Nagar+9th+Street,+Choolaimedu,+Chennai+600094&output=embed"></iframe>
+  </section>
+
+  <a class="whatsapp-button" href="https://wa.me/919362954238" target="_blank">
+    💬 Chat with Us
+  </a>
+
+  <footer>
+    &copy; 2025 AR Students Xerox, Choolaimedu | Designed with ❤ by Imran Ahmed
+  </footer>
+</body>
+</html>
